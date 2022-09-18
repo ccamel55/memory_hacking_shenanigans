@@ -76,7 +76,7 @@ void injectDll(DWORD pid, const std::string& dllPath) {
     }
 
     const auto loadLibraryFn = GetProcAddress(kernalModule, "LoadLibraryA");
-    const auto remoteThread = CreateRemoteThread(targetProcess, NULL, NULL, (LPTHREAD_START_ROUTINE)loadLibraryFn, dllPathStr, NULL, NULL);
+    const auto remoteThread = CreateRemoteThread(targetProcess, NULL, NULL, reinterpret_cast<LPTHREAD_START_ROUTINE>(loadLibraryFn), dllPathStr, NULL, NULL);
 
     if (!remoteThread) {
         CloseHandle(targetProcess);

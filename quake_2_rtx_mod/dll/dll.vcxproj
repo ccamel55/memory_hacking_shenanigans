@@ -43,6 +43,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(SolutionDir)\dependencies\minhook\lib;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)\dependencies\minhook\include;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(SolutionDir)\dependencies\minhook\lib;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)\dependencies\minhook\include;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -56,6 +64,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>libMinHook-x64-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -75,10 +84,26 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>libMinHook-x64-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="helpers\InputManager.cpp" />
+    <ClCompile Include="Hooks.cpp" />
+    <ClCompile Include="render\Renderer2D.cpp" />
+    <ClCompile Include="utils\Console.cpp" />
+    <ClCompile Include="helpers\HookManager.cpp" />
+    <ClCompile Include="utils\PatternScanner.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="helpers\InputManager.h" />
+    <ClInclude Include="Hooks.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="render\Renderer2D.h" />
+    <ClInclude Include="utils\Console.h" />
+    <ClInclude Include="helpers\HookManager.h" />
+    <ClInclude Include="utils\PatternScanner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
