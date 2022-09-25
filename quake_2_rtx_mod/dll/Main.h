@@ -8,7 +8,11 @@ public:
 	void memoryInit();
 public:
 	uint8_t* pExeBaseAddress;
-	uint8_t* pFn_R_EndFrame_GL;
+	uint8_t* pGameLibraryAddress;
+
+	uint8_t* pFn_SV_LoadGameLibrary;
+
+	uint8_t* pFn_ClientThink;
 };
 
 inline C_Globals globals;

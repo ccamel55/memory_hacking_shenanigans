@@ -12,8 +12,9 @@ void C_Globals::memoryInit() {
 
 	// base address of exe can be found by passing NULL
 	pExeBaseAddress = reinterpret_cast<uint8_t*>(GetModuleHandle(NULL));
+	pGameLibraryAddress = NULL;
 
-	pFn_R_EndFrame_GL = patternScanner.addressFromPattern(pExeBaseAddress, "48 83 EC 28 E8 ? ? ? ? 48 8B 05 ? ? ? ? 83 78 30 00 74 05");
+	pFn_SV_LoadGameLibrary = patternScanner.addressFromPattern(pExeBaseAddress, "48 89 5C 24 ? 57 48 83 EC 20 4C 8D 05 ? ? ? ?");
 }
 
 DWORD WINAPI dllThread(void* param)
