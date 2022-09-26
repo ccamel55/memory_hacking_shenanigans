@@ -11,3 +11,6 @@ I need a job, plz give me a job :(
 ## Other info
 - Reversing is done using IDA Pro 7.0 
 - Only works for 64 bit windows machines using x86 processors 
+
+## Note
+- not the best code to read, more a proof of concept
